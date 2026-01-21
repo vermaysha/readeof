@@ -34,6 +34,12 @@ jobs:
         with:
           bun-version: "latest"
 
+      - name: Setup Node.js for npm
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
       - name: Cache Bun dependencies
         uses: actions/cache@v5
         with:
@@ -64,15 +70,18 @@ jobs:
       - name: Build
         env:
           NODE_ENV: production
+          TZ: Asia/Jakarta
         run: |
           bun test
-          bun run ./scripts/build.ts && tsc ./src/index.ts --declaration --emitDeclarationOnly --outDir dist
           bun run bundle
 
+      - name: Upgrade npm for publishing
+        run: npm install -g npm@latest
+
       - name: Publish to npm
-        run: bun publish --access public
-        # env:
-          # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Push changes and tags
         run: git push origin ${{ github.ref_name }} --follow-tags
