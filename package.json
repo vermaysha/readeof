@@ -1,0 +1,60 @@
+{
+  "name": "readeof",
+  "description": "A high-performance, memory-efficient library to read large files backward (line-by-line). Optimized for Node.js and Bun log parsing.",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "bundle": "bun run ./scripts/build.ts && tsc ./src/index.ts --declaration --emitDeclarationOnly --outDir dist",
+    "benchmark": "bun run ./scripts/benchmark.ts",
+    "test": "bun test",
+    "test:watch": "bun test --watch"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "mitata": "^1.0.34"
+  },
+  "keywords": [
+    "file-system",
+    "reverse",
+    "backward",
+    "tail",
+    "read-reverse",
+    "line-reader",
+    "log-parser",
+    "large-files",
+    "read-last-lines"
+  ],
+  "author": {
+    "name": "Ashary Vermaysha",
+    "email": "vermaysha@gmail.com",
+    "url": "https://github.com/vermaysha"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vermaysha/readeof.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vermaysha/readeof/issues"
+  },
+  "homepage": "https://github.com/vermaysha/readeof#readme"
+}
