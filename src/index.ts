@@ -88,7 +88,6 @@ export async function readeof(
   } catch (error) {
     throw error;
   } finally {
-    console.log('Closing file handle');
     if (fileHandle) {
       await fileHandle.close();
     }
