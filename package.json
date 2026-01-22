@@ -1,7 +1,7 @@
 {
   "name": "readeof",
   "description": "A high-performance, memory-efficient library to read large files backward (line-by-line). Optimized for Node.js and Bun log parsing.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
